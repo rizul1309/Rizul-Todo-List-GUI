@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ADDNEW_TODO, GETALL_TODO,TOGGLE_TODO ,UPDATE_TODO,DELETE_TODO,TOGGLE_TAB} from './type';
-const API_URL = 'https://rizul-todo-list.vercel.app/';    
+const API_URL = 'https://rizul-todo-list.vercel.app';    
 
 export const addnewTodo = (data) =>async(dispatch)=>{
     try{
