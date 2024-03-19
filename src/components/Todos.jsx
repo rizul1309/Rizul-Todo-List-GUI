@@ -4,6 +4,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import Todo from './Todo'
 import Tabs from './Tabs'
 import { ACTIVE_TODOS, ALL_TODOS, DONE_TODOS } from '../redux/actions/type'
+import Loader from './Loader'
 
 const Todos = () => {
     const dispatch = useDispatch()
@@ -31,6 +32,7 @@ const Todos = () => {
             }
         });
     }
+    // if(!todos?.length) return <Loader/>;
   return (
     <article>
         <div>
@@ -44,16 +46,20 @@ const Todos = () => {
                 ) : null
             }
         </div>
-        <ul>
-            {
-                getTodos().map(todo=>(
-                    <Todo
-                    todo={todo}
-                    key={todo._id}
-                    />
-                ))
-            }
-        </ul>
+        {
+            !todos?.length ? <Loader/> : 
+                <ul>
+                {
+                    getTodos().map(todo=>(
+                        <Todo
+                        todo={todo}
+                        key={todo._id}
+                        />
+                    ))
+                }
+                </ul>
+        }
+        
     </article>
   )
 }
